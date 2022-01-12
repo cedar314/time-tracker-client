@@ -10,7 +10,9 @@ function AppLayout() {
       <Navbar />
       <div className="flex flex-row">
         <Sidenav />
-        <Outlet />
+        <div className="flex-auto">
+          <Outlet />
+        </div>
         <ActivitiesManager />
       </div>
     </>
