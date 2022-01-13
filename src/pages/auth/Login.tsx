@@ -4,6 +4,7 @@ import Container from 'components/auth/Container'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import validate, { validationError } from 'functions/validation'
+import Head from 'shared/customs/Head'
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required(validationError('required', 'first name')),
@@ -12,10 +13,14 @@ const validationSchema = Yup.object().shape({
   password: validate('password'),
 })
 
-function Register() {
+function Login() {
   return (
     <Container>
       <div>
+        <Head
+          title="Login"
+          desc="Log In to your account to see your activities"
+        />
         <p className="font-bold text-gray-400 uppercase">Free Forever</p>
         <Heading>Log In to your account</Heading>
         <Link to="/register" desc="New member?" linkDesc="Create an account" />
@@ -48,4 +53,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Login

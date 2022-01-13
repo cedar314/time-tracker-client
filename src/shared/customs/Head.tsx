@@ -10,7 +10,7 @@ type HeadProps = {
 function Head({ title, desc, children }: HeadProps) {
   return (
     <Helmet>
-      <title>{title}</title>
+      <title>{title} - Time Tracker</title>
       <meta name="description" content={desc} />
       {children}
     </Helmet>
