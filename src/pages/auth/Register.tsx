@@ -17,10 +17,12 @@ function Register() {
     <Container>
       <div>
         <p className="font-bold text-gray-400 uppercase">Free Forever</p>
-        <Heading>Log In to your account</Heading>
-        <Link to="/register" desc="New member?" linkDesc="Create an account" />
+        <Heading>Create a new account</Heading>
+        <Link to="/login" desc="Already a Member?" linkDesc="Log In" />
         <Formik
           initialValues={{
+            firstName: '',
+            lastName: '',
             email: '',
             password: '',
           }}
@@ -31,15 +33,24 @@ function Register() {
         >
           {({ isSubmitting }) => (
             <Form>
+              <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-2 md:flex-row">
+                <Input name="firstName" placeholder="First name" type="text" />
+                <Input name="lastName" placeholder="Last name" type="text" />
+              </div>
               <Input name="email" placeholder="Email" type="email" />
               <Input name="password" placeholder="Password" type="password" />
-              <Button
-                disabled={isSubmitting}
-                type="submit"
-                className="bg-sky-600"
-              >
-                Log In
-              </Button>
+              <div className="flex justify-between space-x-2">
+                <Button type="button" className="bg-gray-600 ">
+                  Change method
+                </Button>
+                <Button
+                  disabled={isSubmitting}
+                  type="submit"
+                  className="bg-sky-600"
+                >
+                  Create Account
+                </Button>
+              </div>
             </Form>
           )}
         </Formik>

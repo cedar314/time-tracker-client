@@ -6,6 +6,7 @@ import Dashboard from 'components/Dashboard'
 import TimeTracker from 'components/TimeTracker'
 import Login from 'pages/auth/Login'
 import Landing from 'pages/Landing'
+import Register from 'pages/auth/Register'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         </Route>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   )

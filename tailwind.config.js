@@ -1,10 +1,17 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.tsx', './public/index.html'],
+  mode: 'jit',
   theme: {
-    extend: {},
-    container: {
-      center: true,
+    extend: {
+      container: {
+        center: true,
+      },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
