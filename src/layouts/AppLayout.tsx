@@ -8,7 +8,7 @@ function AppLayout() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-row">
+      <div className="container mt-8 flex flex-row">
         <Sidenav />
         <div className="flex-auto">
           <Outlet />

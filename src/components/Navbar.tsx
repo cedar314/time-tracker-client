@@ -2,10 +2,10 @@ import React from 'react'
 
 function Navbar() {
   return (
-    <div className="sticky flex flex-row">
+    <nav className="sticky flex flex-row">
       <Logo />
       <UserAvatar />
-    </div>
+    </nav>
   )
 }
 
