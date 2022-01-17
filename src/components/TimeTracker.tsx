@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import { msTohhmmss } from 'functions/timeConverter'
+import { IActivityType } from 'app/interfaces'
 
 export default function TimeTracker() {
   return (
     <div className="">
-      <h1 className="relative -top-3 left-6 text-2xl font-semibold">
+      <h1 className="relative text-2xl font-semibold -top-3 left-6">
         Current Activities
       </h1>
-      {exampleCurrentActivities.map((activity: currentActivityType) => (
+      {exampleCurrentActivities.map((activity: IActivityType) => (
         <CurrentActivity key={activity.id}>{activity}</CurrentActivity>
       ))}
     </div>
   )
 }
 
-function CurrentActivity({ children }: { children: currentActivityType }) {
+function CurrentActivity({ children }: { children: IActivityType }) {
   const [duration, setDuration] = useState(Date.now() - children.start)
 
   ;(function () {
@@ -28,7 +29,7 @@ function CurrentActivity({ children }: { children: currentActivityType }) {
       <div className="flex">
         <div className="w-[30%]">
           <h2 className="font-bold">{children.name}</h2>
-          <p className="overflow-hidden whitespace-nowrap mr-4">
+          <p className="mr-4 overflow-hidden whitespace-nowrap">
             {children.description}
           </p>
         </div>
@@ -40,25 +41,15 @@ function CurrentActivity({ children }: { children: currentActivityType }) {
           <h3>Left</h3>
         </div>
       </div>
-      <button className="bg-red-400 rounded-md w-20 py-1 my-6 ml-28 mr-4">
+      <button className="w-20 py-1 my-6 mr-4 bg-red-400 rounded-md ml-28">
         Pause
       </button>
-      <button className="bg-slate-400 rounded-md w-20 py-1 mx-4">Stop</button>
+      <button className="w-20 py-1 mx-4 rounded-md bg-slate-400">Stop</button>
     </div>
   )
 }
 
-type currentActivityType = {
-  // Duration will be the state of the activity and will be post to the api after some interval. Does this make sense?
-  id: string
-  name: string
-  start: number
-  // number is easier to work with compared to Date
-  description?: string
-  color: string
-}
-
-const exampleCurrentActivities: Array<currentActivityType> = [
+const exampleCurrentActivities: Array<IActivityType> = [
   {
     id: '123easdsqadq',
     name: 'Sleep',

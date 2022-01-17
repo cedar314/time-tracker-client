@@ -1,10 +1,14 @@
 import React from 'react'
-import { Button, Form, Heading, Input, Link } from 'components/auth/Form'
 import Container from 'components/auth/Container'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import validate, { validationError } from 'functions/validation'
 import Head from 'shared/customs/Head'
+import Heading from 'components/auth/Heading'
+import Form from 'components/auth/Form'
+import Input from 'components/auth/Input'
+import Button from 'components/auth/Button'
+import Link from 'components/auth/Link'
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required(validationError('required', 'first name')),
