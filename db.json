@@ -1,0 +1,14 @@
+{
+    "activities": [{
+        "id": "123easdsqadq",
+        "name": "Sleep",
+        "start": 1642301547698,
+        "color": "#2c318a"
+    }, {
+        "id": "321rh324qif",
+        "name": "Study",
+        "start": 1642300747698,
+        "description": "Study English, web dev, etc.",
+        "color": "#8b8dad"
+    }]
+}

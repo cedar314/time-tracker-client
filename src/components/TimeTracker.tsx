@@ -26,7 +26,7 @@ function CurrentActivity({ children }: { children: IActivityType }) {
 
   return (
     <div className="mb-8">
-      <div className="flex">
+      <div className="flex flex-row">
         <div className="w-[30%]">
           <h2 className="font-bold">{children.name}</h2>
           <p className="mr-4 overflow-hidden whitespace-nowrap">
@@ -41,10 +41,19 @@ function CurrentActivity({ children }: { children: IActivityType }) {
           <h3>Left</h3>
         </div>
       </div>
+<<<<<<< HEAD
       <button className="w-20 py-1 my-6 mr-4 bg-red-400 rounded-md ml-28">
         Pause
       </button>
       <button className="w-20 py-1 mx-4 rounded-md bg-slate-400">Stop</button>
+=======
+      <div className="ml-[20%]">
+        <button className="bg-red-400 rounded-md w-20 py-1 my-6 ml-28 mr-4">
+          Pause
+        </button>
+        <button className="bg-slate-400 rounded-md w-20 py-1 mx-4">Stop</button>
+      </div>
+>>>>>>> 9657e792c6345f38e89536f2f81f166c9df49a81
     </div>
   )
 }
