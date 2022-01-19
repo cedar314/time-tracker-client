@@ -1,4 +1,4 @@
-export interface IActivityType {
+export interface IActivity {
   // Duration will be the state of the activity and will be post to the api after some interval. Does this make sense?
   id: string
   name: string

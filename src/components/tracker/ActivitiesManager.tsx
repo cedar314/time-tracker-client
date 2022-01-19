@@ -1,5 +1,6 @@
 import React from 'react'
 import { hexToHSL } from 'functions/colorConverter'
+import { getActivities } from 'adapters/activitiesAdapter'
 
 export default function ActivitiesManager() {
   return (

@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import { msTohhmmss } from 'functions/timeConverter'
-import { IActivityType } from 'app/interfaces'
+import { IActivity } from 'app/interfaces'
 
 export default function CurrentActivities() {
   return (
     <div>
-      {exampleCurrentActivities.map((activity: IActivityType) => (
+      {exampleCurrentActivities.map((activity: IActivity) => (
         <CurrentActivity key={activity.id}>{activity}</CurrentActivity>
       ))}
     </div>
   )
 }
 
-function CurrentActivity({ children }: { children: IActivityType }) {
+function CurrentActivity({ children }: { children: IActivity }) {
   const [duration, setDuration] = useState(Date.now() - children.start)
 
   ;(function () {
@@ -48,7 +48,7 @@ function CurrentActivity({ children }: { children: IActivityType }) {
   )
 }
 
-const exampleCurrentActivities: Array<IActivityType> = [
+const exampleCurrentActivities: Array<IActivity> = [
   {
     id: '123easdsqadq',
     name: 'Sleep',

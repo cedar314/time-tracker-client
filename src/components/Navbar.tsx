@@ -45,7 +45,7 @@ function MobileNavLink({ to, iconSrc }: { to: string; iconSrc: string }) {
 function SideNav() {
   return (
     <nav
-      className="shadow-[5px_0px_10px_-5px_rgba(0,0,0,0.3)] border-slate-600 rounded-tr-xl
+      className="shadow-[5px_0px_10px_-5px_rgba(0,0,0,0.3)] bg-white rounded-tr-xl
       hidden sm:flex flex-col sticky top-0 left-0 w-[160px] h-screen"
     >
       <div className="flex flex-col">
