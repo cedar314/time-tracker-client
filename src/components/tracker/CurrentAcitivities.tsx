@@ -2,12 +2,9 @@ import React, { useState } from 'react'
 import { msTohhmmss } from 'functions/timeConverter'
 import { IActivityType } from 'app/interfaces'
 
-export default function TimeTracker() {
+export default function CurrentActivities() {
   return (
-    <div className="">
-      <h1 className="relative text-2xl font-semibold -top-3 left-6">
-        Current Activities
-      </h1>
+    <div>
       {exampleCurrentActivities.map((activity: IActivityType) => (
         <CurrentActivity key={activity.id}>{activity}</CurrentActivity>
       ))}
