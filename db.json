@@ -1,14 +1,39 @@
 {
-    "activities": [{
-        "id": "123easdsqadq",
-        "name": "Sleep",
-        "start": 1642301547698,
-        "color": "#2c318a"
-    }, {
-        "id": "321rh324qif",
-        "name": "Study",
-        "start": 1642300747698,
-        "description": "Study English, web dev, etc.",
-        "color": "#8b8dad"
-    }]
+  "activityFolders": [
+    {
+      "id": "123dsfs",
+      "name": "basic activities",
+      "description": "Essential to life",
+      "activities": [
+        {
+          "id": "123easdsqadq",
+          "name": "Sleep",
+          "color": "#2c318a"
+        },
+        {
+          "id": "321rh324qif",
+          "name": "Eat",
+          "description": "Eat junk",
+          "color": "#8b8dad"
+        }
+      ]
+    },
+    {
+      "id": "23452rfewfg",
+      "name": "study",
+      "description": "",
+      "activities": [
+        {
+          "id": "123e67dsqadq",
+          "name": "Study Math",
+          "color": "#2f398a"
+        },
+        {
+          "id": "123e67dsqadq",
+          "name": "Study CS",
+          "color": "#3f338a"
+        }
+      ]
+    }
+  ]
 }

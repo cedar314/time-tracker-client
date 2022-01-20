@@ -4,9 +4,9 @@ import CurrentActivities from './CurrentAcitivities'
 
 export default function TimeTracker() {
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="grow flex flex-col lg:flex-row mb-[64px] sm:mb-0">
       <ActivitiesManager />
-      {/* <CurrentActivities /> */}
+      <CurrentActivities />
     </div>
   )
 }

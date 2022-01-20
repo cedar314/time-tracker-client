@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { CSSProperties, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import LogoImg from '../assets/svg/LogoPlaceholder.png'
+import whiteClockIcon from '../assets/icon/whiteNavIcon/clock.png'
+import whiteChartIcon from '../assets/icon/whiteNavIcon/chart.png'
+import whiteCalendarIcon from '../assets/icon/whiteNavIcon/calendar.png'
+import whiteUserIcon from '../assets/icon/whiteNavIcon/user.png'
+import whiteLogoutIcon from '../assets/icon/whiteNavIcon/logout.png'
+import greyClockIcon from '../assets/icon/greyNavIcon/clock.png'
+import greyChartIcon from '../assets/icon/greyNavIcon/chart.png'
+import greyCalendarIcon from '../assets/icon/greyNavIcon/calendar.png'
+import greyUserIcon from '../assets/icon/greyNavIcon/user.png'
+import greyLogoutIcon from '../assets/icon/greyNavIcon/logout.png'
 
 function Navbar() {
   return (
@@ -45,26 +55,25 @@ function MobileNavLink({ to, iconSrc }: { to: string; iconSrc: string }) {
 function SideNav() {
   return (
     <nav
-      className="shadow-[5px_0px_10px_-5px_rgba(0,0,0,0.3)] bg-white rounded-tr-xl
-      hidden sm:flex flex-col sticky top-0 left-0 w-[160px] h-screen"
+      className="w-[180px] shadow-[5px_0px_10px_-5px_rgba(0,0,0,0.3)] bg-white rounded-tr-xl
+      hidden sm:flex flex-col sticky left-0 text-[#777]"
     >
       <div className="flex flex-col">
         <Logo />
-        <SideNavLink
-          to="/"
-          iconSrc="https://img.icons8.com/windows/64/585858/stopwatch.png"
-        >
+        <SideNavLink to="/" icon={greyClockIcon} activeIcon={whiteClockIcon}>
           Tracker
         </SideNavLink>
         <SideNavLink
           to="dashboard"
-          iconSrc="https://img.icons8.com/ios/50/585858/combo-chart--v1.png"
+          icon={greyChartIcon}
+          activeIcon={whiteChartIcon}
         >
           Dashboard
         </SideNavLink>
         <SideNavLink
           to="calendar"
-          iconSrc="https://img.icons8.com/ios/50/585858/calendar--v1.png"
+          icon={greyCalendarIcon}
+          activeIcon={whiteCalendarIcon}
         >
           Calendar
         </SideNavLink>
@@ -73,13 +82,15 @@ function SideNav() {
         <SeparatorLine />
         <SideNavLink
           to="setting"
-          iconSrc="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/585858/external-user-interface-kiranshastry-solid-kiranshastry-1.png"
+          icon={greyUserIcon}
+          activeIcon={whiteUserIcon}
         >
           Settings
         </SideNavLink>
         <SideNavLink
           to="login"
-          iconSrc="https://img.icons8.com/external-kmg-design-detailed-outline-kmg-design/64/585858/external-logout-real-estate-kmg-design-detailed-outline-kmg-design.png"
+          icon={greyLogoutIcon}
+          activeIcon={whiteLogoutIcon}
         >
           Logout
         </SideNavLink>
@@ -94,17 +105,34 @@ function Logo() {
 
 function SideNavLink({
   to,
-  iconSrc,
+  icon,
+  activeIcon,
   children,
 }: {
   to: string
-  iconSrc: string
+  icon: string
+  activeIcon: string
   children: string
 }) {
+  const activeStyle: CSSProperties = {
+    backgroundColor: '#F58320',
+    color: 'white',
+  }
+
+  const [active, setActive] = useState<boolean>(false)
+
   return (
-    <NavLink className="h-10 py-2 my-1 rounded" to={to}>
-      <img className="h-full mx-auto inline mr-2" src={iconSrc} />
-      <span>{children}</span>
+    <NavLink
+      style={({ isActive }) => {
+        return {
+          ...(isActive ? activeStyle : null),
+        }
+      }}
+      className="flex items-center h-10  my-1 mx-3 px-2 rounded-lg hover:bg-gray-200"
+      to={to}
+    >
+      <img className="h-full mr-3 py-2" src={active ? activeIcon : icon} />
+      <div>{children}</div>
     </NavLink>
   )
 }

@@ -1,75 +1,69 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { hexToHSL } from 'functions/colorConverter'
-import { getActivities } from 'adapters/activitiesAdapter'
+import { getActivityFolders } from 'adapters/activitiesAdapter'
+import { IActivity, IFolder } from 'app/interfaces'
 
 export default function ActivitiesManager() {
+  const [activityFolders, setActivityFolder] = useState<IFolder[]>([])
+
+  useEffect(() => {
+    getActivityFolders().then((value) => setActivityFolder(value))
+  }, [])
+
+  console.log(activityFolders)
   return (
-    <div className="relative flex-none w-[30%] border-[3px] border-slate-700 rounded-xl self-start">
-      <span className="absolute -top-4 left-6 bg-white px-2 text-2xl font-semibold">
-        Tasks
-      </span>
-      <div className="mt-6 mb-3 mx-2">
-        {exampleActivities.map((activity: activityType) => (
-          <ActivityCard key={activity.id}>{activity}</ActivityCard>
-        ))}
+    <div className="grow">
+      {activityFolders.map((folder) => (
+        <ActivityFolder key={folder.id} folder={folder} />
+      ))}
+    </div>
+  )
+}
+
+function ActivityFolder({ folder }: { folder: IFolder }) {
+  return <FolderCard folder={folder} />
+}
+
+function FolderCard({ folder }: { folder: IFolder }) {
+  return (
+    <div className="flex items-center bg-white rounded-md my-2 mx-4 px-2 shadow-md">
+      <img
+        className="mx-4 w-6"
+        src="https://img.icons8.com/small/32/585858/folder-invoices--v1.png"
+      />
+      <SeparatorLine />
+      <div className="px-4 grow">
+        <div>{folder.name}</div>
+        <div>{folder.description}</div>
+      </div>
+      <div>
+        {folder.activities.length} task{folder.activities.length > 1 ? 's' : ''}
       </div>
     </div>
   )
 }
 
-function ActivityCard({ children }: { children: activityType }) {
-  return (
-    <div
-      style={{
-        backgroundColor: children.isActive ? children.color : 'white',
-        border: children.isActive
-          ? `1px solid ${children.color}`
-          : '1px solid black',
-        color: !children.isActive
-          ? 'black'
-          : hexToHSL(children.color)[2] > 50
-          ? 'black'
-          : 'white',
-      }}
-      className="rounded-xl my-1 py-2 px-4"
-    >
-      {children.name}
-    </div>
-  )
-}
+// function ActivityCard({ activities }: { activities: IActivity }) {
+//   return (
+//     <div
+//       style={{
+//         backgroundColor: activities.isActive ? activities.color : 'white',
+//         border: activities.isActive
+//           ? `1px solid ${activities.color}`
+//           : '1px solid black',
+//         color: !activities.isActive
+//           ? 'black'
+//           : hexToHSL(activities.color)[2] > 50
+//           ? 'black'
+//           : 'white',
+//       }}
+//       className="rounded-xl my-1 py-2 px-4"
+//     >
+//       {children.name}
+//     </div>
+//   )
+// }
 
-type activityType = {
-  id: string
-  name: string
-  description?: string
-  color: string
-  isActive: boolean
-  icon?: string
+function SeparatorLine() {
+  return <div className="self-stretch w-[1.5px] bg-gray-300"></div>
 }
-
-const exampleActivities: Array<activityType> = [
-  {
-    id: '123esqadq',
-    name: 'Sleep',
-    color: '#2c318a',
-    isActive: true,
-  },
-  {
-    id: '321rhqif',
-    name: 'Study',
-    color: '#8b8dad',
-    isActive: true,
-  },
-  {
-    id: 'ad33rcff',
-    name: 'Work',
-    color: '#888c31',
-    isActive: false,
-  },
-  {
-    id: '33rcsadff',
-    name: 'Reading',
-    color: '#868031',
-    isActive: false,
-  },
-]
