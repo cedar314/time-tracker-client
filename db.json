@@ -8,13 +8,16 @@
         {
           "id": "123easdsqadq",
           "name": "Sleep",
-          "color": "#2c318a"
+          "description": "",
+          "color": "#2c318a",
+          "icon": "https://img.icons8.com/ios/50/777777/sleeping-in-bed.png"
         },
         {
           "id": "321rh324qif",
           "name": "Eat",
           "description": "Eat junk",
-          "color": "#8b8dad"
+          "color": "#8b8dad",
+          "icon": "https://img.icons8.com/external-neu-royyan-wijaya/50/ffffff/external-eat-neu-solid-neu-royyan-wijaya-2.png"
         }
       ]
     },
@@ -26,12 +29,16 @@
         {
           "id": "123e67dsqadq",
           "name": "Study Math",
-          "color": "#2f398a"
+          "description": "1+1",
+          "color": "#2f398a",
+          "icon": "https://img.icons8.com/material-two-tone/48/777777/math.png"
         },
         {
-          "id": "123e67dsqadq",
+          "id": "123e67dsq35dq",
           "name": "Study CS",
-          "color": "#3f338a"
+          "description": "Python and Java",
+          "color": "#3f338a",
+          "icon": "https://img.icons8.com/ios-filled/50/777777/average-math.png"
         }
       ]
     }

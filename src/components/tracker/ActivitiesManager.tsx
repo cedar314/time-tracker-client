@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { hexToHSL } from 'functions/colorConverter'
 import { getActivityFolders } from 'adapters/activitiesAdapter'
 import { IActivity, IFolder } from 'app/interfaces'
 
@@ -21,49 +20,74 @@ export default function ActivitiesManager() {
 }
 
 function ActivityFolder({ folder }: { folder: IFolder }) {
-  return <FolderCard folder={folder} />
+  const [isOpen, setOpen] = useState<boolean>(false)
+
+  return (
+    <div className="bg-[#dfdfdf] mx-8 my-4 rounded-md">
+      <FolderCard
+        folder={folder}
+        isOpen={isOpen}
+        onClick={() => setOpen((open) => !open)}
+      />
+      {isOpen &&
+        folder.activities.map((activity: IActivity) => (
+          <ActivityCard key={activity.id} activities={activity} />
+        ))}
+      {isOpen && <div className="h-1"></div>}
+    </div>
+  )
 }
 
-function FolderCard({ folder }: { folder: IFolder }) {
+function FolderCard({
+  folder,
+  isOpen,
+  onClick,
+}: {
+  folder: IFolder
+  isOpen: boolean
+  onClick: () => void
+}) {
   return (
-    <div className="flex items-center bg-white rounded-md my-2 mx-4 px-2 shadow-md">
+    <div
+      className="flex items-center bg-white rounded-md my-2 px-2 shadow-md"
+      onClick={onClick}
+    >
       <img
         className="mx-4 w-6"
         src="https://img.icons8.com/small/32/585858/folder-invoices--v1.png"
       />
       <SeparatorLine />
-      <div className="px-4 grow">
-        <div>{folder.name}</div>
-        <div>{folder.description}</div>
+      <div className="my-1 px-4 grow">
+        <div className="text-[#333] font-semibold">{folder.name}</div>
+        <div className="text-[#777] text-sm">{folder.description}</div>
       </div>
-      <div>
-        {folder.activities.length} task{folder.activities.length > 1 ? 's' : ''}
+      <div className="flex items-center text-[#777] text-sm">
+        <div>
+          {folder.activities.length} task
+          {folder.activities.length > 1 ? 's' : ''}
+        </div>
+        <img
+          className={`mx-2 w-[20px] ${!isOpen && 'rotate-90'}`}
+          src="https://img.icons8.com/material-outlined/48/888888/expand-arrow--v1.png"
+        />
       </div>
     </div>
   )
 }
 
-// function ActivityCard({ activities }: { activities: IActivity }) {
-//   return (
-//     <div
-//       style={{
-//         backgroundColor: activities.isActive ? activities.color : 'white',
-//         border: activities.isActive
-//           ? `1px solid ${activities.color}`
-//           : '1px solid black',
-//         color: !activities.isActive
-//           ? 'black'
-//           : hexToHSL(activities.color)[2] > 50
-//           ? 'black'
-//           : 'white',
-//       }}
-//       className="rounded-xl my-1 py-2 px-4"
-//     >
-//       {children.name}
-//     </div>
-//   )
-// }
+function ActivityCard({ activities }: { activities: IActivity }) {
+  return (
+    <div className="flex items-center bg-white rounded-md my-4 px-2 mx-4 shadow-md">
+      <img className="mx-6 w-5" src={activities.icon} />
+      <SeparatorLine />
+      <div className="my-1 px-4 grow">
+        <div className="text-[#333] font-semibold">{activities.name}</div>
+        <div className="text-[#777] text-sm">{activities.description}</div>
+      </div>
+    </div>
+  )
+}
 
 function SeparatorLine() {
-  return <div className="self-stretch w-[1.5px] bg-gray-300"></div>
+  return <div className="self-stretch w-[1.2px] bg-gray-300 rounded-full"></div>
 }

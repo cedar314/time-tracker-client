@@ -1,5 +1,5 @@
 import React, { CSSProperties, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useResolvedPath, useMatch } from 'react-router-dom'
 import LogoImg from '../assets/svg/LogoPlaceholder.png'
 import whiteClockIcon from '../assets/icon/whiteNavIcon/clock.png'
 import whiteChartIcon from '../assets/icon/whiteNavIcon/chart.png'
@@ -100,7 +100,9 @@ function SideNav() {
 }
 
 function Logo() {
-  return <img className="mt-4 mb-4 mx-4" src={LogoImg} alt="Logo" />
+  return (
+    <img className="mt-4 mb-8 mx-auto w-[130px]" src={LogoImg} alt="Logo" />
+  )
 }
 
 function SideNavLink({
@@ -118,27 +120,23 @@ function SideNavLink({
     backgroundColor: '#F58320',
     color: 'white',
   }
-
-  const [active, setActive] = useState<boolean>(false)
+  const resolved = useResolvedPath(to)
+  const match = useMatch({ path: resolved.pathname, end: true })
 
   return (
-    <NavLink
-      style={({ isActive }) => {
-        return {
-          ...(isActive ? activeStyle : null),
-        }
-      }}
+    <Link
+      style={match ? activeStyle : undefined}
       className="flex items-center h-10  my-1 mx-3 px-2 rounded-lg hover:bg-gray-200"
       to={to}
     >
-      <img className="h-full mr-3 py-2" src={active ? activeIcon : icon} />
+      <img className="h-full mr-3 py-2" src={match ? activeIcon : icon} />
       <div>{children}</div>
-    </NavLink>
+    </Link>
   )
 }
 
 function SeparatorLine() {
-  return <div className="h-[2px] w-full bg-gray-300"></div>
+  return <div className="h-[2px] self-stretch bg-gray-300"></div>
 }
 
 // function UserAvatar() {
