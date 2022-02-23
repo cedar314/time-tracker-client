@@ -3,7 +3,6 @@ import Container from 'components/auth/Container'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import validate, { validationError } from 'functions/validation'
-import Head from 'shared/customs/Head'
 import Heading from 'components/auth/Heading'
 import Form from 'components/auth/Form'
 import Input from 'components/auth/Input'
@@ -21,8 +20,6 @@ function Register() {
   return (
     <Container>
       <div>
-        <Head title="Register" desc="Create a new account to track your time" />
-        <p className="font-bold text-gray-400 uppercase">Free Forever</p>
         <Heading>Create a new account</Heading>
         <Link to="/login" desc="Already a Member?" linkDesc="Log In" />
         <Formik

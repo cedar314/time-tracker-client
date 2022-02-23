@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { IFolder } from 'app/interfaces'
-import { BACKEND_URL } from '../app/configs'
+import { IFolder } from 'config/interfaces'
+import { BACKEND_URL } from '../config/configs'
 
 export function getActivityFolders(): Promise<Array<IFolder>> {
   if (typeof BACKEND_URL === 'string') {

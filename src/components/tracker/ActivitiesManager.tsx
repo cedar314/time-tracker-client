@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getActivityFolders } from 'adapters/activitiesAdapter'
-import { IActivity, IFolder } from 'app/interfaces'
+import { IActivity, IFolder } from 'config/interfaces'
 
 export default function ActivitiesManager() {
   const [activityFolders, setActivityFolder] = useState<IFolder[]>([])
@@ -49,7 +49,7 @@ function FolderCard({
 }) {
   return (
     <div
-      className="flex items-center bg-white rounded-md my-2 px-2 shadow-md"
+      className="flex items-center bg-white rounded-md my-2 px-2 shadow-[0px_0px_10px_-2px_rgba(0,0,0,0.3)]"
       onClick={onClick}
     >
       <img

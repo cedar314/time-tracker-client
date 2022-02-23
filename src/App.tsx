@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import AppLayout from 'layouts/AppLayout'
+import AppLayout from 'pages/AppLayout'
 import Dashboard from 'components/Dashboard'
 import TimeTracker from 'components/tracker/TimeTracker'
 import Login from 'pages/auth/Login'

@@ -1,5 +1,5 @@
-import React, { CSSProperties, useState } from 'react'
-import { Link, NavLink, useResolvedPath, useMatch } from 'react-router-dom'
+import React, { CSSProperties } from 'react'
+import { Link, useResolvedPath, useMatch } from 'react-router-dom'
 import LogoImg from '../assets/svg/LogoPlaceholder.png'
 import whiteClockIcon from '../assets/icon/whiteNavIcon/clock.png'
 import whiteChartIcon from '../assets/icon/whiteNavIcon/chart.png'
