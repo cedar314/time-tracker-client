@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom'
 import 'assets/css/index.css'
 import App from './App'
 
+import Amplify, { Auth } from 'aws-amplify'
+import awsconfig from './aws-exports'
+Amplify.configure(awsconfig)
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -12,9 +12,11 @@ export default function ActivitiesManager() {
   console.log(activityFolders)
   return (
     <div className="grow">
+      <div className="mx-8 my-4">User&#39;s Task</div>
       {activityFolders.map((folder) => (
         <ActivityFolder key={folder.id} folder={folder} />
       ))}
+      <div className="mx-8 my-4">Remainder</div>
     </div>
   )
 }

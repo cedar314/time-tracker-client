@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 
-function Login() {
+function Verify() {
   return (
     <Formik
       initialValues={{
@@ -26,4 +26,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Verify

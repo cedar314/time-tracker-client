@@ -3,7 +3,7 @@ import { ReactComponent as ChevronSvg } from '../../assets/svg/up-chevron.svg'
 
 export default function CurrentActivities() {
   return (
-    <div className="lg:w-[300px] bg-white px-4 py-4 flex flex-col">
+    <div className="hidden sm:flex flex-col lg:w-[300px] bg-white px-4 py-4">
       <CalendarButton />
       <DayControl />
       <DayCalendar />
