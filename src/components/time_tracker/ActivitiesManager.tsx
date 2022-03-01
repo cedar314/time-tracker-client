@@ -16,7 +16,7 @@ export default function ActivitiesManager() {
       {activityFolders.map((folder) => (
         <ActivityFolder key={folder.id} folder={folder} />
       ))}
-      <div className="mx-8 my-4">Remainder</div>
+      <div className="mx-8 my-4">Reminder</div>
     </div>
   )
 }
