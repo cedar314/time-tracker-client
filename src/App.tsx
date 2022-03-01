@@ -3,11 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import AppLayout from 'pages/AppLayout'
 import Dashboard from 'components/Dashboard'
-import TimeTracker from 'components/time_tracker/TimeTracker'
-import Login from 'pages/auth/Login'
-import Register from 'pages/auth/Register'
-import Verify from 'pages/auth/Verify'
+import TimeTracker from 'components/time_tracker'
 import Calendar from 'components/Calendar'
+import Auth from 'pages/Auth'
+import Login from 'components/auth/Login'
+import Register from 'components/auth/Register'
 
 function App() {
   return (
@@ -15,12 +15,13 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<TimeTracker />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/calendar" element={<Calendar />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="calendar" element={<Calendar />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/verify" element={<Verify />} />
+        <Route path="/auth" element={<Auth />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )
