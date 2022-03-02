@@ -1,6 +1,11 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, ReactComponentElement } from 'react'
 import { Link, useResolvedPath, useMatch } from 'react-router-dom'
-import LogoImg from '../assets/svg/LogoPlaceholder.png'
+import LogoImg from '../assets/img/Logo.png'
+import { ReactComponent as HomeSvg } from '../assets/svg/home.svg'
+import { ReactComponent as BarChartSvg } from '../assets/svg/bar-chart.svg'
+import { ReactComponent as CalendarSvg } from '../assets/svg/calendar.svg'
+import { ReactComponent as UserSvg } from '../assets/svg/avatar-user.svg'
+import { ReactComponent as ExitSvg } from '../assets/svg/exit.svg'
 import whiteClockIcon from '../assets/icon/whiteNavIcon/clock.png'
 import whiteChartIcon from '../assets/icon/whiteNavIcon/chart.png'
 import whiteCalendarIcon from '../assets/icon/whiteNavIcon/calendar.png'
@@ -24,30 +29,35 @@ function Navbar() {
 function MobileNav() {
   return (
     <nav className="fixed w-screen h-[64px] bottom-0 flex item-center justify-evenly bg-gray-900 sm:hidden">
-      <MobileNavLink
-        to="/"
-        iconSrc="https://img.icons8.com/windows/64/ffffff/stopwatch.png"
-      />
-      <MobileNavLink
-        to="dashboard"
-        iconSrc="https://img.icons8.com/ios/50/ffffff/combo-chart--v1.png"
-      />
-      <MobileNavLink
-        to="calendar"
-        iconSrc="https://img.icons8.com/ios/50/ffffff/calendar--v1.png"
-      />
-      <MobileNavLink
-        to="setting"
-        iconSrc="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/ffffff/external-user-interface-kiranshastry-solid-kiranshastry-1.png"
-      />
+      <MobileNavLink to="/">
+        <HomeSvg fill="white" className="h-full mx-auto my-auto" />
+      </MobileNavLink>
+      <MobileNavLink to="dashboard">
+        <BarChartSvg
+          fill="white"
+          className="h-full -rotate-90 mx-auto my-auto"
+        />
+      </MobileNavLink>
+      <MobileNavLink to="calendar">
+        <CalendarSvg fill="white" className="h-full mx-auto my-auto" />
+      </MobileNavLink>
+      <MobileNavLink to="setting">
+        <UserSvg fill="white" className="h-full mx-auto my-auto" />
+      </MobileNavLink>
     </nav>
   )
 }
 
-function MobileNavLink({ to, iconSrc }: { to: string; iconSrc: string }) {
+function MobileNavLink({
+  to,
+  children,
+}: {
+  to: string
+  children: React.SVGProps<SVGSVGElement>
+}) {
   return (
     <Link className="py-3 w-[25%] active:bg-gray-600" to={to}>
-      <img className="h-full mx-auto" src={iconSrc} />
+      {children}
     </Link>
   )
 }
@@ -60,40 +70,14 @@ function SideNav() {
     >
       <div className="flex flex-col">
         <Logo />
-        <SideNavLink to="/" icon={greyClockIcon} activeIcon={whiteClockIcon}>
-          Tracker
-        </SideNavLink>
-        <SideNavLink
-          to="dashboard"
-          icon={greyChartIcon}
-          activeIcon={whiteChartIcon}
-        >
-          Dashboard
-        </SideNavLink>
-        <SideNavLink
-          to="calendar"
-          icon={greyCalendarIcon}
-          activeIcon={whiteCalendarIcon}
-        >
-          Calendar
-        </SideNavLink>
+        <SideNavLink to="/">Tracker</SideNavLink>
+        <SideNavLink to="dashboard">Dashboard</SideNavLink>
+        <SideNavLink to="calendar">Calendar</SideNavLink>
       </div>
       <div className="flex flex-col mt-auto">
         <SeparatorLine />
-        <SideNavLink
-          to="setting"
-          icon={greyUserIcon}
-          activeIcon={whiteUserIcon}
-        >
-          Settings
-        </SideNavLink>
-        <SideNavLink
-          to="login"
-          icon={greyLogoutIcon}
-          activeIcon={whiteLogoutIcon}
-        >
-          Logout
-        </SideNavLink>
+        <SideNavLink to="setting">Setting</SideNavLink>
+        <SideNavLink to="login">Logout</SideNavLink>
       </div>
     </nav>
   )
@@ -105,32 +89,32 @@ function Logo() {
   )
 }
 
-function SideNavLink({
-  to,
-  icon,
-  activeIcon,
-  children,
-}: {
-  to: string
-  icon: string
-  activeIcon: string
-  children: string
-}) {
+function SideNavLink({ to, children }: { to: string; children: string }) {
   const activeStyle: CSSProperties = {
     backgroundColor: '#F58320',
     color: 'white',
   }
   const resolved = useResolvedPath(to)
   const match = useMatch({ path: resolved.pathname, end: true })
-
+  const fill = match ? '#fff' : '#777'
   return (
     <Link
       style={match ? activeStyle : undefined}
-      className="flex items-center h-10  my-1 mx-3 px-2 rounded-lg hover:bg-gray-200"
+      className="flex items-center h-10  my-1 mx-3 px-2 py-2 rounded-lg hover:bg-gray-200"
       to={to}
     >
-      <img className="h-full mr-3 py-2" src={match ? activeIcon : icon} />
-      <div>{children}</div>
+      {to === '/' ? (
+        <HomeSvg fill={fill} className="h-full w-[40px]" />
+      ) : to === 'dashboard' ? (
+        <BarChartSvg fill={fill} className="h-full w-[40px] -rotate-90" />
+      ) : to === 'calendar' ? (
+        <CalendarSvg fill={fill} className="h-full w-[40px]" />
+      ) : to === 'setting' ? (
+        <UserSvg fill={fill} className="h-full w-[40px]" />
+      ) : to === 'login' ? (
+        <ExitSvg fill={fill} className="h-full w-[40px] -scale-100" />
+      ) : null}
+      {children}
     </Link>
   )
 }

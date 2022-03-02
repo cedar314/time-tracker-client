@@ -21,6 +21,7 @@ export default function Login() {
     >
       {({ isSubmitting }) => (
         <AuthForm>
+          <h1 className="text-xl">SIGN IN</h1>
           <AuthField name="email" placeholder="Email" type="email" />
           <AuthField name="password" placeholder="Password" type="password" />
           <AuthSubmitButton disabled={isSubmitting}>Sign In</AuthSubmitButton>

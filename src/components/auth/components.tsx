@@ -3,7 +3,7 @@ import { Form, Field } from 'formik'
 
 export function AuthForm({ children }: { children: Array<JSX.Element> }) {
   return (
-    <Form className="absolute right-8 top-8 flex flex-col gap-y-2 w-[300px] px-4 py-8 rounded-xl bg-white shadow-lg">
+    <Form className="absolute right-8 top-8 flex flex-col gap-y-2 w-[300px] px-4 py-4 rounded-xl bg-white shadow-lg">
       {children}
     </Form>
   )

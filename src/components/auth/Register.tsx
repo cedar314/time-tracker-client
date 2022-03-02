@@ -1,4 +1,5 @@
 import React from 'react'
+import LogoImg from '../assets/img/Logo.png'
 import { useNavigate } from 'react-router-dom'
 import { signUp } from '../../functions/auth'
 import { Formik } from 'formik'
@@ -22,6 +23,7 @@ export default function Register() {
     >
       {({ isSubmitting }) => (
         <AuthForm>
+          <h1 className="text-xl">REGISTER</h1>
           <AuthField name="name" placeholder="Name" type="text" />
           <AuthField name="email" placeholder="Email" type="email" />
           <AuthField name="password" placeholder="Password" type="password" />
