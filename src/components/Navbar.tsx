@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactComponentElement } from 'react'
+import React, { CSSProperties } from 'react'
 import { Link, useResolvedPath, useMatch } from 'react-router-dom'
 import LogoImg from '../assets/img/Logo.png'
 import { ReactComponent as HomeSvg } from '../assets/svg/home.svg'
@@ -6,16 +6,6 @@ import { ReactComponent as BarChartSvg } from '../assets/svg/bar-chart.svg'
 import { ReactComponent as CalendarSvg } from '../assets/svg/calendar.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/avatar-user.svg'
 import { ReactComponent as ExitSvg } from '../assets/svg/exit.svg'
-import whiteClockIcon from '../assets/icon/whiteNavIcon/clock.png'
-import whiteChartIcon from '../assets/icon/whiteNavIcon/chart.png'
-import whiteCalendarIcon from '../assets/icon/whiteNavIcon/calendar.png'
-import whiteUserIcon from '../assets/icon/whiteNavIcon/user.png'
-import whiteLogoutIcon from '../assets/icon/whiteNavIcon/logout.png'
-import greyClockIcon from '../assets/icon/greyNavIcon/clock.png'
-import greyChartIcon from '../assets/icon/greyNavIcon/chart.png'
-import greyCalendarIcon from '../assets/icon/greyNavIcon/calendar.png'
-import greyUserIcon from '../assets/icon/greyNavIcon/user.png'
-import greyLogoutIcon from '../assets/icon/greyNavIcon/logout.png'
 
 function Navbar() {
   return (
