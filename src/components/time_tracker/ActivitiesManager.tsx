@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { getActivityFolders } from 'adapters/activitiesAdapter'
-import { IActivity, IFolder } from 'config/interfaces'
+import { IActivity, IFolder, ICognitoUser } from 'config/interfaces'
+import { getCurrentUser } from 'functions/auth'
 
 export default function ActivitiesManager() {
   const [activityFolders, setActivityFolder] = useState<IFolder[]>([])
+  const [user, setUser] = useState<ICognitoUser>()
+
+  useEffect(() => {
+    async function fetchUser() {
+      const user = await getCurrentUser()
+      setUser(user)
+    }
+    fetchUser().catch(console.error)
+  }, [])
 
   useEffect(() => {
     getActivityFolders().then((value) => setActivityFolder(value))
   }, [])
 
-  console.log(activityFolders)
   return (
     <div className="grow">
-      <div className="mx-8 my-4">User&#39;s Task</div>
+      <div className="mx-8 my-4">
+        {user ? user.attributes.name : 'user'}&#39;s Task
+      </div>
       {activityFolders.map((folder) => (
         <ActivityFolder key={folder.id} folder={folder} />
       ))}
@@ -51,7 +62,7 @@ function FolderCard({
 }) {
   return (
     <div
-      className="flex items-center bg-white rounded-md my-2 px-2 shadow-[0px_0px_10px_-2px_rgba(0,0,0,0.3)]"
+      className="flex items-center bg-white rounded-md my-2 px-2 shadow-[0px_0px_10px_-2px_rgba(0,0,0,0.3)] hover:shadow-[0px_0px_20px_-2px_rgba(0,0,0,0.3)]"
       onClick={onClick}
     >
       <img
@@ -79,15 +90,20 @@ function FolderCard({
 
 function ActivityCard({ activities }: { activities: IActivity }) {
   return (
-    <div className="flex items-center bg-white rounded-md my-4 px-2 mx-4 shadow-md">
+    <div className="flex items-center bg-white rounded-md my-4 px-2 mx-4 shadow-[0px_0px_5px_-2px_rgba(0,0,0,0.3)] hover:shadow-[0px_0px_15px_-2px_rgba(0,0,0,0.3)]">
       <img className="mx-6 w-5" src={activities.icon} />
       <SeparatorLine />
       <div className="my-1 px-4 grow">
         <div className="text-[#333] font-semibold">{activities.name}</div>
         <div className="text-[#777] text-sm">{activities.description}</div>
       </div>
+      <ActivityClock />
     </div>
   )
+}
+
+function ActivityClock() {
+  return <div>20:10:34</div>
 }
 
 function SeparatorLine() {

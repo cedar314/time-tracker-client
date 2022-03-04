@@ -14,7 +14,6 @@ export default function Login() {
         password: '',
       }}
       onSubmit={async (values) => {
-        console.log('clicked')
         await signIn(values.email, values.password)
         navigate('/')
       }}

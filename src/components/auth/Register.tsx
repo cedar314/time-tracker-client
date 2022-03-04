@@ -1,5 +1,4 @@
 import React from 'react'
-import LogoImg from '../assets/img/Logo.png'
 import { useNavigate } from 'react-router-dom'
 import { signUp } from '../../functions/auth'
 import { Formik } from 'formik'

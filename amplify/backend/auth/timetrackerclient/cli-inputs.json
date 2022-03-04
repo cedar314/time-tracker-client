@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "timetr3d80af4f",
+    "resourceNameTruncated": "timetrfb68dbeb",
     "userPoolName": "timetrackerclient",
     "autoVerifiedAttributes": [
       "email"
@@ -32,9 +32,9 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "timetr3d80af4f_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "timetrfb68dbeb_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "3d80af4f",
+    "sharedId": "fb68dbeb",
     "resourceName": "timetrackerclient",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
@@ -47,14 +47,6 @@
     "adminQueries": false,
     "thirdPartyAuth": false,
     "authProviders": [],
-    "hostedUI": true,
-    "hostedUIDomainName": "hwup7gjeyn37",
-    "authProvidersUserPool": [
-      "Facebook",
-      "Google"
-    ],
-    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/login/\"]}",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }
