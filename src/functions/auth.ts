@@ -1,4 +1,5 @@
 import { Auth } from 'aws-amplify'
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 
 export async function signUp(username: string, password: string, name: string) {
   try {
@@ -31,6 +32,14 @@ export async function signIn(username: string, password: string) {
   } catch (error) {
     console.log('error signing in', error)
   }
+}
+
+export function facebookSignIn() {
+  Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Facebook })
+}
+
+export function googleSignIn() {
+  Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Google })
 }
 
 export async function signOut() {

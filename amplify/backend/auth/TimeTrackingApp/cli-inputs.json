@@ -3,8 +3,8 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "timetrfb68dbeb",
-    "userPoolName": "timetrackerclient",
+    "resourceNameTruncated": "timetr77bb1a3f",
+    "userPoolName": "TimeTrackingApp",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -32,10 +32,10 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "timetrfb68dbeb_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "TimeTr77bb1a3f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "fb68dbeb",
-    "resourceName": "timetrackerclient",
+    "sharedId": "77bb1a3f",
+    "resourceName": "TimeTrackingApp",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
     "usernameAttributes": [
@@ -47,6 +47,14 @@
     "adminQueries": false,
     "thirdPartyAuth": false,
     "authProviders": [],
+    "hostedUI": true,
+    "hostedUIDomainName": "ugfwwbg4ys9m",
+    "authProvidersUserPool": [
+      "Facebook",
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/auth/login/\"]}",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }

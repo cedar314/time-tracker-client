@@ -1,11 +1,11 @@
 import React, { CSSProperties } from 'react'
 import { Link, useResolvedPath, useMatch } from 'react-router-dom'
-import LogoImg from '../assets/img/Logo.png'
-import { ReactComponent as HomeSvg } from '../assets/svg/home.svg'
-import { ReactComponent as BarChartSvg } from '../assets/svg/bar-chart.svg'
-import { ReactComponent as CalendarSvg } from '../assets/svg/calendar.svg'
-import { ReactComponent as UserSvg } from '../assets/svg/avatar-user.svg'
-import { ReactComponent as ExitSvg } from '../assets/svg/exit.svg'
+import LogoImg from 'assets/img/Logo.png'
+import { ReactComponent as HomeSvg } from 'assets/svg/home.svg'
+import { ReactComponent as BarChartSvg } from 'assets/svg/bar-chart.svg'
+import { ReactComponent as CalendarSvg } from 'assets/svg/calendar.svg'
+import { ReactComponent as UserSvg } from 'assets/svg/avatar-user.svg'
+import { ReactComponent as ExitSvg } from 'assets/svg/exit.svg'
 
 function Navbar() {
   return (
@@ -102,7 +102,7 @@ function SideNavLink({ to, children }: { to: string; children: string }) {
       ) : to === 'setting' ? (
         <UserSvg fill={fill} className="h-full w-[40px]" />
       ) : to === 'login' ? (
-        <ExitSvg fill={fill} className="h-full w-[40px] -scale-100" />
+        <ExitSvg fill={fill} className="h-full w-[40px]" />
       ) : null}
       {children}
     </Link>

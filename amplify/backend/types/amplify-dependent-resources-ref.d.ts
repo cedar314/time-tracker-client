@@ -1,8 +1,10 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "timetrackerclient": {
+        "TimeTrackingApp": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
+            "HostedUIDomain": "string",
+            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
