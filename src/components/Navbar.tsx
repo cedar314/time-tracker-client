@@ -67,7 +67,7 @@ function SideNav() {
       <div className="flex flex-col mt-auto">
         <SeparatorLine />
         <SideNavLink to="setting">Setting</SideNavLink>
-        <SideNavLink to="login">Logout</SideNavLink>
+        <SideNavLink to="auth/login">Logout</SideNavLink>
       </div>
     </nav>
   )
@@ -101,7 +101,7 @@ function SideNavLink({ to, children }: { to: string; children: string }) {
         <CalendarSvg fill={fill} className="h-full w-[40px]" />
       ) : to === 'setting' ? (
         <UserSvg fill={fill} className="h-full w-[40px]" />
-      ) : to === 'login' ? (
+      ) : to === 'auth/login' ? (
         <ExitSvg fill={fill} className="h-full w-[40px]" />
       ) : null}
       {children}
