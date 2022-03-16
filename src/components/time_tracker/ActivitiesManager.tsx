@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getActivityFolders } from 'adapters/activitiesAdapter'
 import { IActivity, IFolder, ICognitoUser } from 'config/interfaces'
 import { getCurrentUser } from 'functions/auth'
+import UpgradeButton from 'components/misc/UpgradeButton'
 
 export default function ActivitiesManager() {
   const [activityFolders, setActivityFolder] = useState<IFolder[]>([])
@@ -10,6 +11,7 @@ export default function ActivitiesManager() {
   useEffect(() => {
     async function fetchUser() {
       const user = await getCurrentUser()
+      console.log(user)
       setUser(user)
     }
     fetchUser().catch(console.error)
@@ -21,13 +23,22 @@ export default function ActivitiesManager() {
 
   return (
     <div className="grow">
-      <div className="mx-8 my-4">
-        {user ? user.attributes.name : 'user'}&#39;s Task
-      </div>
+      <PageTitle user={user} />
       {activityFolders.map((folder) => (
         <ActivityFolder key={folder.id} folder={folder} />
       ))}
       <div className="mx-8 my-4">Reminder</div>
+    </div>
+  )
+}
+
+function PageTitle(props: { user: ICognitoUser | undefined }) {
+  return (
+    <div className="mx-8 my-4 flex items-center">
+      <div className="font-bold">
+        {props.user ? props.user.attributes.name : 'user'}&#39;s Task
+      </div>
+      <UpgradeButton />
     </div>
   )
 }

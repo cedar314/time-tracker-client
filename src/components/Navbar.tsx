@@ -113,8 +113,4 @@ function SeparatorLine() {
   return <div className="h-[2px] self-stretch bg-gray-300"></div>
 }
 
-// function UserAvatar() {
-//   return <div className="ml-auto">User Avatar</div>
-// }
-
 export default Navbar
