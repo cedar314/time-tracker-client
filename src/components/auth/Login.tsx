@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { signIn, facebookSignIn, googleSignIn } from 'functions/auth'
 import { Formik } from 'formik'
@@ -30,6 +31,7 @@ export default function Login() {
           <AuthField name="email" placeholder="Email" type="email" />
           <AuthField name="password" placeholder="Password" type="password" />
           <AuthSubmitButton disabled={isSubmitting}>Sign In</AuthSubmitButton>
+          <Link to="../register">Create a new account.</Link>
           <div className="mx-auto font-bold text-gray-600">OR</div>
           <FacebookButton onClick={facebookSignIn} />
           <GoogleButton onClick={googleSignIn} />

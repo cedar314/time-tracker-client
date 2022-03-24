@@ -1,21 +1,35 @@
 import { CognitoUser } from '@aws-amplify/auth'
 
-export interface IFolder {
-  id: string
+export interface IUser {
+  _id: string
   name: string
-  description: string
-  activities: Array<IActivity>
+  taskFolders: IFolder[]
+  reminders: IReminder[]
 }
 
-export interface IActivity {
-  // Duration will be the state of the activity and will be post to the api after some interval. Does this make sense?
-  id: string
+export interface IFolder {
+  _id: string
   name: string
-  icon: string
   description: string
-  // start: number
-  // number is easier to work with compared to Date
-  color: string
+  children: ITask[]
+}
+
+export interface ITask {
+  _id: string
+  name: string
+  description: string
+  isActive: boolean
+  timeline: Date[]
+}
+
+export interface IReminder {
+  _id: string
+  name: string
+  description: string
+  isActive: boolean
+  isStarted: boolean
+  time: Date
+  timeline: Date[]
 }
 
 /*

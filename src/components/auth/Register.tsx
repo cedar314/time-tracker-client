@@ -1,6 +1,6 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { signUp, facebookSignIn, googleSignIn } from 'functions/auth'
+import { useNavigate, Link } from 'react-router-dom'
+import { signUp, signIn, facebookSignIn, googleSignIn } from 'functions/auth'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -35,9 +35,9 @@ export default function Register() {
       }}
       validationSchema={validationSchema}
       onSubmit={async (values) => {
-        console.log('clicked')
         await signUp(values.email, values.password, values.name)
-        navigate('/auth/verify')
+        // await signIn(values.email, values.password)
+        // navigate('/')
       }}
     >
       {({ isSubmitting, errors, touched, isValid }) => (
@@ -58,6 +58,7 @@ export default function Register() {
           <AuthSubmitButton disabled={isSubmitting || !isValid}>
             Create Account
           </AuthSubmitButton>
+          <Link to="../login">Already have an account?</Link>
           <div className="mx-auto font-bold text-gray-600">OR</div>
           <FacebookButton onClick={facebookSignIn} />
           <GoogleButton onClick={googleSignIn} />

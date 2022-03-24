@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as ChevronSvg } from '../../assets/svg/up-chevron.svg'
+import { ReactComponent as ChevronSvg } from 'assets/svg/up-chevron.svg'
 
 export default function CurrentActivities() {
   return (
